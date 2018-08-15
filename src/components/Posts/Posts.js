@@ -1,13 +1,28 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Header from '../Header';
+import { graphql } from 'react-apollo';
 
-const Posts = props => (
-  <View style={styles.posts}>
-    <Header showMenu={props.showMenu} title="Posts" />
-    <Text>Posts Page</Text>
-  </View>
-);
+import Header from '../Header';
+import RouterLink from '../Router/RouterLink';
+import { POSTS_QUERY } from './postQueries';
+
+const Posts = props => {
+  const { allPosts, loading, error } = props;
+  if (loading) {
+    return <Text>Loading</Text>;
+  }
+
+  return (
+    <View style={styles.posts}>
+      <Header showMenu={props.showMenu} title="Posts" />
+      {allPosts.map(post => (
+        <RouterLink to={`/post/${post.id}`} key={post.id}>
+          <Text>{post.title}</Text>
+        </RouterLink>
+      ))}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   posts: {
@@ -16,4 +31,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Posts;
+// export default Posts;
+export default graphql(POSTS_QUERY, {
+  props: ({ data }) => ({
+    ...data
+  })
+})(Posts);

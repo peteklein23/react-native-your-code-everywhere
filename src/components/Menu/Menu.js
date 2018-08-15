@@ -23,13 +23,17 @@ export default class Menu extends React.Component {
             <Ionicons name="md-close" size={24} color="#333" />
           </TouchableOpacity>
         </View>
+        <Divider />
+
         <RouterLink to="/" hideMenu={hideMenu} style={linkStyles}>
           <Text>Posts</Text>
         </RouterLink>
         <Divider />
+
         <RouterLink to="/new-post" hideMenu={hideMenu} style={linkStyles}>
           <Text>New Post</Text>
         </RouterLink>
+        <Divider />
       </ScrollView>
     );
   }

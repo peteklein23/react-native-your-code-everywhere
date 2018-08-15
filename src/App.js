@@ -1,5 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
+import { ApolloProvider } from 'react-apollo';
+import client from './components/graphql';
+
 import SideMenu from './components/Menu/SideMenu';
 import Menu from './components/Menu/Menu';
 import Router from './components/Router/Router';
@@ -27,17 +30,19 @@ export default class App extends React.Component {
   render() {
     const { menuShouldShow, height, width } = this.state;
     return (
-      <View style={styles.container} onLayout={() => this.handleLayout()}>
-        <Router showMenu={() => this.showMenu()}>
-          <SideMenu
-            height={height}
-            width={width}
-            menuShouldShow={menuShouldShow}
-          >
-            <Menu hideMenu={() => this.hideMenu()} />
-          </SideMenu>
-        </Router>
-      </View>
+      <ApolloProvider client={client}>
+        <View style={styles.container} onLayout={() => this.handleLayout()}>
+          <Router showMenu={() => this.showMenu()}>
+            <SideMenu
+              height={height}
+              width={width}
+              menuShouldShow={menuShouldShow}
+            >
+              <Menu hideMenu={() => this.hideMenu()} />
+            </SideMenu>
+          </Router>
+        </View>
+      </ApolloProvider>
     );
   }
 }

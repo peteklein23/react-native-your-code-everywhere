@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { NativeRouter, Route } from 'react-router-native';
 import Posts from '../Posts/Posts';
 import NewPost from '../Posts/NewPost';
+import EditPost from '../Posts/EditPost';
 
 const Router = props => {
   const showMenu = props.showMenu;
@@ -22,6 +23,12 @@ const Router = props => {
           path="/new-post"
           render={props => (
             <NewPost style={styles.router} showMenu={showMenu} {...props} />
+          )}
+        />
+        <Route
+          path="/post/:id"
+          render={props => (
+            <EditPost style={styles.router} showMenu={showMenu} {...props} />
           )}
         />
         {props.children}
