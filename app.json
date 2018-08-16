@@ -1,5 +1,11 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "name": "Your App Everywhere",
+    "icon": "./icons/icon.png",
+    "version": "1.0.0",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.peteklein.your-app-everywhere"
+    }
   }
 }

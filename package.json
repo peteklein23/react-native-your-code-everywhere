@@ -10,6 +10,8 @@
     "babel-plugin-transform-imports": "^1.4.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "css-loader": "^0.28.7",
+    "electron": "^2.0.7",
+    "electron-url-loader": "./electron-url-loader",
     "file-loader": "^1.1.7",
     "jest-expo": "~27.0.0",
     "react-native-scripts": "latest",
@@ -24,7 +26,8 @@
     "ios": "react-native-scripts ios",
     "test": "jest",
     "web": "webpack-dev-server -d --config ./webpack.config.js  --inline --hot --colors --content-base public/ --history-api-fallback",
-    "build": "NODE_ENV=production webpack -p --config ./webpack.config.js"
+    "build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
+    "electron": "npm explore electron-url-loader -- npm run electron"
   },
   "jest": {
     "preset": "jest-expo"
